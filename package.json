@@ -1,0 +1,26 @@
+{
+  "name": "stunning-octo-carnival-module-18-challenge",
+  "version": "1.0.0",
+  "description": "Module 18 Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node utils/seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Craigien/stunning-octo-carnival-module-18-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Craigien/stunning-octo-carnival-module-18-challenge/issues"
+  },
+  "homepage": "https://github.com/Craigien/stunning-octo-carnival-module-18-challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^7.0.2"
+  }
+}
