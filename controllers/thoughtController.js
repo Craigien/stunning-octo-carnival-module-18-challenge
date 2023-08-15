@@ -117,8 +117,4 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-}
-
-// To Do
-
-// README
+};

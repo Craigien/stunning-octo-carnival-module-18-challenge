@@ -25,7 +25,7 @@ To add or delete friends to or from a user, use either a POST or DELETE route wi
 
 To add or delete reactions from a thought, user either a POST or DELETE route with http://localhost:3001/api/thoughts/thoughtId/reactions and pass in JSON.  ThoughtId will be the thought that you wish to add the reaction to.
 
-Social Media Video Demonstration: 
+Social Media Video Demonstration: https://drive.google.com/file/d/1-UFSbCuVkmw0ABPSTJwORwQejH-9HHDO/view?usp=sharing
 
 ## Credits
 
