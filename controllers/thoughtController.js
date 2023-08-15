@@ -28,13 +28,15 @@ module.exports = {
 
     async createThought(req, res) {
         try {
-            const dbthoughtData = await Thought.create(req.body);
-            const userThought = await User.findOneAndUpdate(
+            const newThought = await Thought.create(req.body);
+
+            const addThoughtToUser = await User.findOneAndUpdate(
                 { _id: req.body.userId },
-                { $addToSet: { thoughts: res.body.thoughtId } },
+                { $push: { thoughts: newThought._id } },
                 { new: true }
             );
-            res.json(dbthoughtData, userThought);
+
+            res.json(newThought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -76,7 +78,7 @@ module.exports = {
         try {
             const reaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $addToSet: { reactions: req.body } },
+                { $push: { reactions: req.body } },
                 { runValidators: true, new: true }
             );
 
@@ -94,8 +96,8 @@ module.exports = {
         try {
             const removedReaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $pull: { reactions: req.params.reactionId } },
-                { runValidators: true, new: true }
+                { $pull: { reactions: { reactionId: req.body.reactionId } } },
+                { new: true }
             );
 
             if (!removedReaction)
@@ -109,3 +111,9 @@ module.exports = {
         }
     },
 }
+
+// To Do
+
+// Seed database
+// Comments
+// README

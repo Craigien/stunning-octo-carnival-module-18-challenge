@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const reactionSchema = new Schema(
     {
@@ -22,16 +22,16 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: function(createdAt) {
-                return createdAt;
+            get: function(date) {
+                return date.toISOString().split("T") [0];
             },
         },
     },
     {
         toJSON: {
             getters: true,
-            virtuals: true,
         },
+        _id: false,
         id: false,
     }
 );
@@ -39,7 +39,7 @@ const reactionSchema = new Schema(
 const thoughtSchema = new Schema(
     {
 
-        thought: {
+        thoughtText: {
             type: String,
             required: true,
             maxLength: 280,
@@ -48,8 +48,8 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: function(createdAt) {
-                return createdAt;
+            get: function(date) {
+                return date.toISOString().split("T") [0];
             },
         },
 
@@ -69,7 +69,7 @@ const thoughtSchema = new Schema(
     }
 );
 
-reactionSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
