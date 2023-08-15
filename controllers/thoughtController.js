@@ -2,6 +2,7 @@ const Thought = require('../models/Thought');
 const User = require('../models/User');
 
 module.exports = {
+    // Return all documents from thoughts table
     async getThoughts(req, res) {
         try {
             const thoughts = await Thought.find();
@@ -11,6 +12,7 @@ module.exports = {
         }
     },
 
+    // Return single document from thought table
     async getSingleThought(req, res) {
         try {
             const thought = await Thought.findOne({ _id: req.params.thoughtId })
@@ -26,6 +28,7 @@ module.exports = {
         }
     },
 
+    // Add new thought to thought table
     async createThought(req, res) {
         try {
             const newThought = await Thought.create(req.body);
@@ -42,6 +45,7 @@ module.exports = {
         }
     },
 
+    // Update document in thought table
     async updateThought(req, res) {
         try {
             const updatedThought = await Thought.findOneAndUpdate(
@@ -60,6 +64,7 @@ module.exports = {
         }
     },
 
+    // Delete document from thought table
     async deleteThought(req, res) {
         try {
             const deletedThought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -74,6 +79,7 @@ module.exports = {
         }
     },
 
+    // Add new reaction to reaction array in document in thought table
     async createReaction(req, res) {
         try {
             const reaction = await Thought.findOneAndUpdate(
@@ -92,6 +98,7 @@ module.exports = {
         }
     },
 
+    // Delete reaction from reaction array from document in thought table
     async deleteReaction(req, res) {
         try {
             const removedReaction = await Thought.findOneAndUpdate(
@@ -114,6 +121,4 @@ module.exports = {
 
 // To Do
 
-// Seed database
-// Comments
 // README
